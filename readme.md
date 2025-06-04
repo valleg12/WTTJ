@@ -1,266 +1,86 @@
-/src
-  /components
-    /layout
-      SidebarDashboard.tsx
-      Topbar.tsx
-      MainPanel.tsx
-      SocialSidebar.tsx
-    /dashboard
-      DashboardView.tsx
-      WeeklySummaryCard.tsx
-      QuickActions.tsx
-      SocialSuggestions.tsx
-      ActivityFeed.tsx
-    /calendar
-      CalendarView.tsx
-      CalendarGrid.tsx
-      CalendarPopup.tsx
-      WeekCopyButton.tsx
-    /stats
-      StatsView.tsx
-      PieChart.tsx
-      StackedBarChart.tsx
-      TeamComparisonCurve.tsx
-      PresenceHeatmap.tsx
-      StatsFilters.tsx
-      ExportButtons.tsx
-    /hours
-      HoursView.tsx
-      HoursTable.tsx
-      HoursDragDrop.tsx
-      RecurringRules.tsx
-      OvertimeAlert.tsx
-    /preferences
-      PreferencesView.tsx
-      ProfileForm.tsx
-      NotificationSettings.tsx
-      DisplaySettings.tsx
-      InterestSelector.tsx
-    /shared
-      UserAvatar.tsx
-      ColleagueList.tsx
-      ActivityCard.tsx
-      LoadingSpinner.tsx
-      AnimatedTransition.tsx
-  /context
-    UserContext.tsx
-    CalendarContext.tsx
-    StatsContext.tsx
-    HoursContext.tsx
-    PreferencesContext.tsx
-    ActivitiesContext.tsx
-  /hooks
-    useUser.ts
-    useCalendar.ts
-    useStats.ts
-    useHours.ts
-    usePreferences.ts
-    useActivities.ts
-  /lib
-    api.ts
-    slackBot.ts
-    dustIntegration.ts
-    googleCalendar.ts
-    utils.ts
-  /assets
-    /icons
-    /images
-  /styles
-    tailwind.css
-    theme.ts
-  App.tsx
-  main.tsx
+# Jungle Gather (WTTJ)
 
-  Voici une **architecture de projet hyper poussée** basée sur toutes tes notes et besoins, pensée pour un déploiement professionnel, évolutif et collaboratif.  
-Cette structure te servira de roadmap : tu pourras cocher ce qui est fait, prioriser, et revenir dessus à tout moment.
+**Jungle Gather** est une interface web immersive inspirée de Gather, conçue pour dynamiser la vie d'équipe, la gestion de planning et la présence dans une entreprise multi-sites, le tout dans un univers pixel-art ludique.
 
 ---
 
-# 🌴 Architecture fonctionnelle & technique — Jungle WorkFlow
+## 🚀 Fonctionnalités principales
 
-## 1. Structure générale du projet
+- **Calendrier interactif** : double agenda (événements, planning personnel), navigation semaine/mois, responsive, francisé.
+- **Déclaration de présence** : sélection simple (présentiel, remote, aucun) pour chaque jour, pastilles synchronisées.
+- **Création d'événements** : modale ergonomique, ajout dynamique, affichage dans la grille centrale.
+- **Export CSV** : export des listes de présents/remote/participants en un clic (toujours accessible).
+- **Vue "Events"** : accès rapide à tous les événements créés.
+- **UI pixel-art** : avatars animaux, map immersive, sidebar moderne.
+- **Accessibilité mobile** : design responsive, lisible sur tous supports.
+
+---
+
+## 🗂️ Architecture du projet
 
 ```
-/src
-  /components
-    /layout
-      SidebarDashboard.tsx
-      Topbar.tsx
-      MainPanel.tsx
-      SocialSidebar.tsx
-    /dashboard
-      DashboardView.tsx
-      WeeklySummaryCard.tsx
-      QuickActions.tsx
-      SocialSuggestions.tsx
-      ActivityFeed.tsx
-    /calendar
-      CalendarView.tsx
-      CalendarGrid.tsx
-      CalendarPopup.tsx
-      WeekCopyButton.tsx
-    /stats
-      StatsView.tsx
-      PieChart.tsx
-      StackedBarChart.tsx
-      TeamComparisonCurve.tsx
-      PresenceHeatmap.tsx
-      StatsFilters.tsx
-      ExportButtons.tsx
-    /hours
-      HoursView.tsx
-      HoursTable.tsx
-      HoursDragDrop.tsx
-      RecurringRules.tsx
-      OvertimeAlert.tsx
-    /preferences
-      PreferencesView.tsx
-      ProfileForm.tsx
-      NotificationSettings.tsx
-      DisplaySettings.tsx
-      InterestSelector.tsx
-    /shared
-      UserAvatar.tsx
-      ColleagueList.tsx
-      ActivityCard.tsx
-      LoadingSpinner.tsx
-      AnimatedTransition.tsx
-  /context
-    UserContext.tsx
-    CalendarContext.tsx
-    StatsContext.tsx
-    HoursContext.tsx
-    PreferencesContext.tsx
-    ActivitiesContext.tsx
-  /hooks
-    useUser.ts
-    useCalendar.ts
-    useStats.ts
-    useHours.ts
-    usePreferences.ts
-    useActivities.ts
-  /lib
-    api.ts
-    slackBot.ts
-    dustIntegration.ts
-    googleCalendar.ts
-    utils.ts
-  /assets
-    /icons
-    /images
-  /styles
-    tailwind.css
-    theme.ts
-  App.tsx
-  main.tsx
+jungle-wanderer-paradise/
+├── src/
+│   ├── components/
+│   │   ├── CalendarView.tsx         # Vue calendrier principale (logique, UI, modale)
+│   │   ├── GameMap.tsx              # Carte pixel-art, mascottes, remote
+│   │   ├── SidebarDashboard.tsx     # Sidebar navigation principale
+│   │   ├── ...
+│   ├── context/
+│   │   └── GameContext.tsx          # Contexte global (utilisateurs, présence, etc.)
+│   └── ...
+├── public/
+│   └── assets/                      # Images, avatars, backgrounds
+├── package.json
+└── readme.md
 ```
 
 ---
 
-## 2. Fonctionnalités détaillées par onglet
+## ⚙️ Lancement rapide
 
-### 🧩 1. Vue d’ensemble (Dashboard)
-- **Résumé hebdomadaire** (WeeklySummaryCard) : jours télétravail, présentiel, congés, total heures, comparatif équipe (anonyme)
-- **Planning de la semaine** (Calendar horizontal, avatars collègues)
-- **Actions rapides** (QuickActions) : “Je viens aujourd’hui”, “Je télétravaille”, “Je pose un congé”
-- **Suggestions sociales** (SocialSuggestions) : “3 collègues seront là mardi…”
-- **Mini-feed activités** (ActivityFeed) : projets, activités Slack/Dust
-- **Interactions** : hover sur jour → liste collègues, clic sur action → update Slack/Google Calendar
-
-### 📅 2. Calendrier
-- **Vue mensuelle/hebdo** (CalendarGrid)
-- **Statuts colorés** (présentiel, télétravail, congé, non déclaré)
-- **Ajout activité** (CalendarPopup)
-- **Double-clic = déclaration rapide**
-- **Copier semaine dernière** (WeekCopyButton)
-- **Affichage collègues par date** (mini avatars, tooltip)
-- **Sync Google Calendar/Lucas**
-- **Suggestions automatiques**
-
-### 📊 3. Statistiques
-- **Camembert** (PieChart) : répartition télétravail/présentiel/congés
-- **Barres empilées** (StackedBarChart) : évolution semaine/semaine
-- **Courbe comparée** (TeamComparisonCurve) : vous vs équipe
-- **Heatmap** (PresenceHeatmap) : présence par jour de la semaine
-- **Filtres** (StatsFilters) : période, lieu, équipe
-- **Export** (ExportButtons) : PDF/CSV
-- **Résumé mensuel Dust**
-
-### 🕒 4. Horaires
-- **Tableau horaires** (HoursTable) : par jour, drag & drop
-- **Alertes dépassement** (OvertimeAlert)
-- **Créneaux inhabituels**
-- **Modification horaires**
-- **Règles récurrentes** (RecurringRules)
-- **Notifications Slack bienveillantes**
-
-### ⚙️ 5. Préférences
-- **Profil utilisateur** (ProfileForm) : nom, rôle, photo, équipe, hobbies
-- **Notifications** (NotificationSettings) : Slack/email, fréquence
-- **Affichage** (DisplaySettings) : thème, langue, layout
-- **Déclaration auto** (basée sur habitudes)
-- **Centres d’intérêt** (InterestSelector) : suggestions d’activités
+1. **Cloner le repo**
+   ```bash
+   git clone https://github.com/valleg12/WTTJ.git
+   cd WTTJ
+   ```
+2. **Installer les dépendances**
+   ```bash
+   npm install
+   # ou
+   yarn install
+   ```
+3. **Lancer le projet**
+   ```bash
+   npm run dev
+   # ou
+   yarn dev
+   ```
+4. **Accéder à l'interface**
+   - Ouvre [http://localhost:3000](http://localhost:3000) dans ton navigateur.
 
 ---
 
-## 3. Transversal & Social
-
-- **Encart activités sociales** (SocialSidebar) sur chaque page
-  - Prochaines activités, bouton “Je participe”, suggestions selon intérêts
-- **Bot Slack intégré** (lib/slackBot.ts)
-  - Message matinal “Tu fais quoi aujourd’hui ?”
-  - Résumés de présence, projets (via Dust)
-- **Animations & UI**
-  - Animations douces (shared/AnimatedTransition)
-  - Responsive desktop/mobile
-  - UI inspirée Notion/Linear/Slack
+## 🛠️ Technologies utilisées
+- **React** + **TypeScript**
+- **Tailwind CSS** (UI moderne, responsive)
+- **date-fns** (gestion des dates, francisation)
+- **Lucide Icons** (icônes modernes)
 
 ---
 
-## 4. Cas d’usage clés (à valider)
-1. Planifier sa semaine en 2 clics
-2. Venir un jour spécifique car des collègues y seront
-3. Découvrir une activité spontanée ou un hobby commun
-4. Visualiser son rythme de présence sans se comparer
-5. Proposer une rencontre en présentiel à un collègue sur le même projet
+## �� Points d'extension possibles
+- Intégration Google Calendar / Slack / SSO
+- Système de notifications et d'animations sociales
+- Gestion fine des droits (admin, équipe, etc.)
+- Drag & drop d'événements, avatars custom
+- Statistiques de présence, suggestions sociales
 
 ---
 
-## 5. Stack & intégrations
-- **React + TypeScript + Tailwind CSS**
-- **Google Workspace API** (calendrier, présence)
-- **Slack API** (bot, notifications, feed)
-- **Dust** (synthèses projets, suggestions)
-- **Lucas** (congés)
-- **Backend/API** (Node/Express ou serverless, si besoin)
-- **Déploiement** : Vercel, Netlify, ou serveur dédié
+## 📂 Repo GitHub
+[https://github.com/valleg12/WTTJ](https://github.com/valleg12/WTTJ)
 
 ---
 
-## 6. Suivi d’avancement (exemple)
-- [x] Architecture générale
-- [x] Sidebar/navigation dynamique
-- [x] Dashboard statique
-- [ ] Dashboard dynamique & interactif
-- [ ] Calendrier interactif
-- [ ] Statistiques graphiques
-- [ ] Horaires drag & drop
-- [ ] Préférences utilisateur avancées
-- [ ] Intégration Slack/Google/Dust
-- [ ] Activités sociales transversales
-- [ ] Responsive/mobile
-- [ ] Animations UI
-
----
-
-**Tu peux revenir sur cette architecture à tout moment pour :**
-- Ajouter des modules
-- Prioriser les features
-- Suivre ce qui est fait/restant
-- Déléguer à une équipe
-
-Prototype fonctionnel incluant au minimum les fonctionnalités essentielles :
-    - Interface de déclaration de présence
-    - Visualisation des collègues présents/prévus
-    - Modification de sa présence
-    - Extraction de la liste des présents voila pour les exigences de fonctionnalités 
+**Conçu pour une expérience collaborative, fun et efficace !**
