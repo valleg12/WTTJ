@@ -1,86 +1,73 @@
-# Jungle Gather (WTTJ)
+# Welcome to your Lovable project
 
-**Jungle Gather** est une interface web immersive inspirée de Gather, conçue pour dynamiser la vie d'équipe, la gestion de planning et la présence dans une entreprise multi-sites, le tout dans un univers pixel-art ludique.
+## Project info
 
----
+**URL**: https://lovable.dev/projects/300ad61f-5a74-47f7-a4af-71faf33cfbc9
 
-## 🚀 Fonctionnalités principales
+## How can I edit this code?
 
-- **Calendrier interactif** : double agenda (événements, planning personnel), navigation semaine/mois, responsive, francisé.
-- **Déclaration de présence** : sélection simple (présentiel, remote, aucun) pour chaque jour, pastilles synchronisées.
-- **Création d'événements** : modale ergonomique, ajout dynamique, affichage dans la grille centrale.
-- **Export CSV** : export des listes de présents/remote/participants en un clic (toujours accessible).
-- **Vue "Events"** : accès rapide à tous les événements créés.
-- **UI pixel-art** : avatars animaux, map immersive, sidebar moderne.
-- **Accessibilité mobile** : design responsive, lisible sur tous supports.
+There are several ways of editing your application.
 
----
+**Use Lovable**
 
-## 🗂️ Architecture du projet
+Simply visit the [Lovable Project](https://lovable.dev/projects/300ad61f-5a74-47f7-a4af-71faf33cfbc9) and start prompting.
 
+Changes made via Lovable will be committed automatically to this repo.
+
+**Use your preferred IDE**
+
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+Follow these steps:
+
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
+
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies.
+npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
 ```
-jungle-wanderer-paradise/
-├── src/
-│   ├── components/
-│   │   ├── CalendarView.tsx         # Vue calendrier principale (logique, UI, modale)
-│   │   ├── GameMap.tsx              # Carte pixel-art, mascottes, remote
-│   │   ├── SidebarDashboard.tsx     # Sidebar navigation principale
-│   │   ├── ...
-│   ├── context/
-│   │   └── GameContext.tsx          # Contexte global (utilisateurs, présence, etc.)
-│   └── ...
-├── public/
-│   └── assets/                      # Images, avatars, backgrounds
-├── package.json
-└── readme.md
-```
 
----
+**Edit a file directly in GitHub**
 
-## ⚙️ Lancement rapide
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
 
-1. **Cloner le repo**
-   ```bash
-   git clone https://github.com/valleg12/WTTJ.git
-   cd WTTJ
-   ```
-2. **Installer les dépendances**
-   ```bash
-   npm install
-   # ou
-   yarn install
-   ```
-3. **Lancer le projet**
-   ```bash
-   npm run dev
-   # ou
-   yarn dev
-   ```
-4. **Accéder à l'interface**
-   - Ouvre [http://localhost:3000](http://localhost:3000) dans ton navigateur.
+**Use GitHub Codespaces**
 
----
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-## 🛠️ Technologies utilisées
-- **React** + **TypeScript**
-- **Tailwind CSS** (UI moderne, responsive)
-- **date-fns** (gestion des dates, francisation)
-- **Lucide Icons** (icônes modernes)
+## What technologies are used for this project?
 
----
+This project is built with:
 
-## �� Points d'extension possibles
-- Intégration Google Calendar / Slack / SSO
-- Système de notifications et d'animations sociales
-- Gestion fine des droits (admin, équipe, etc.)
-- Drag & drop d'événements, avatars custom
-- Statistiques de présence, suggestions sociales
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
 
----
+## How can I deploy this project?
 
-## 📂 Repo GitHub
-[https://github.com/valleg12/WTTJ](https://github.com/valleg12/WTTJ)
+Simply open [Lovable](https://lovable.dev/projects/300ad61f-5a74-47f7-a4af-71faf33cfbc9) and click on Share -> Publish.
 
----
+## Can I connect a custom domain to my Lovable project?
 
-**Conçu pour une expérience collaborative, fun et efficace !**
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
