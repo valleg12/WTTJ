@@ -67,7 +67,7 @@ jungle-wanderer-paradise/
 
 ## Crédits & Liens utiles
 
-- Développé par Victorien Allegre et collaborateurs.
+- Développé par Victorien Alleg et collaborateurs.
 - UI inspirée de Gather, Notion, Linear.
 - [Repo GitHub](https://github.com/valleg12/WTTJ)
 
